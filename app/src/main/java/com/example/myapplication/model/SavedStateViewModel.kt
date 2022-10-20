@@ -6,8 +6,8 @@ import com.example.myapplication.itf.ISaveStateHandle
 
 class SavedStateViewModel: ViewModel() ,InjectSaveStateHandler , IHolderSavedStateHandler {
 
-    lateinit var saveStateHandleWarp : ISaveStateHandle;
-    var localSavedHandler : ISaveStateHandle = LocalSavedHandler()
+    private lateinit var saveStateHandleWarp : ISaveStateHandle;
+    private var localSavedHandler : ISaveStateHandle = LocalSavedHandler()
     override fun attachSaveStateHandler(savedHandler: ISaveStateHandle) {
         saveStateHandleWarp = savedHandler;
     }
