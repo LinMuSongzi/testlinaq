@@ -1,23 +1,24 @@
 package com.example.myapplication.model
 
 import androidx.lifecycle.ViewModel
-import com.example.myapplication.IHolderSaveStateHandler
-import com.example.myapplication.ISaveStateHandle
+import com.example.myapplication.itf.IHolderSavedStateHandler
+import com.example.myapplication.itf.ISaveStateHandle
 
-class SaveStateViewModel: ViewModel() ,InjectSaveStateHandler , IHolderSaveStateHandler {
+class SavedStateViewModel: ViewModel() ,InjectSaveStateHandler , IHolderSavedStateHandler {
 
     lateinit var saveStateHandleWarp : ISaveStateHandle;
-    var localSavedHandler :ISaveStateHandle = LocalSavedHandler()
+    var localSavedHandler : ISaveStateHandle = LocalSavedHandler()
     override fun attachSaveStateHandler(savedHandler: ISaveStateHandle) {
         saveStateHandleWarp = savedHandler;
     }
 
-    override fun getHolderSaveStateHandler(): ISaveStateHandle {
+    override fun getHolderSavedStateHandle(): ISaveStateHandle {
         return saveStateHandleWarp
     }
 
     fun getLocalHolderSaveStateHandler(): ISaveStateHandle {
         return localSavedHandler
     }
+
 
 }

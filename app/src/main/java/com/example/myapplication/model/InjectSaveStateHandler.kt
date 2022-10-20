@@ -1,6 +1,6 @@
 package com.example.myapplication.model
 
-import com.example.myapplication.ISaveStateHandle
+import com.example.myapplication.itf.ISaveStateHandle
 
 internal interface InjectSaveStateHandler {
 

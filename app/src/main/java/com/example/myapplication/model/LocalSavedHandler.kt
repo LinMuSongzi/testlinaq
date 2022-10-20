@@ -1,7 +1,7 @@
 package com.example.myapplication.model
 
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.ISaveStateHandle
+import com.example.myapplication.itf.ISaveStateHandle
 import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.set
