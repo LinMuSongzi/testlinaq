@@ -7,7 +7,7 @@ import com.example.myapplication.itf.IHolderSavedStateHandler
 import com.example.myapplication.itf.ILifeSaveStateHandler
 import com.example.myapplication.itf.ISavedStateHandle
 
-class LifeWrapSavedState(var lifecycleOwner: LifecycleOwner, var holder:IHolderSavedStateHandler) :ILifeSaveStateHandler {
+class LifeWrapSavedState(var lifecycleOwner: LifeInteractiveSupport, var holder:IHolderSavedStateHandler) :ILifeSaveStateHandler {
     override fun getThisLifecycle(): LifecycleOwner {
         return lifecycleOwner
     }

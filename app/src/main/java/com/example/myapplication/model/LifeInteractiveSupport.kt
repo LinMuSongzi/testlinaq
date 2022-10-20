@@ -16,19 +16,6 @@ class LifeInteractiveSupport(
     private var factory = SaveViewModelProviderFactory(lifeInteractive, bundle)
     private val viewModelProvider = ViewModelProvider(this, this)
 
-//    init {
-//        lifeInteractive.lifecycle.addObserver(object : DefaultLifecycleObserver {
-//            override fun onCreate(owner: LifecycleOwner) {
-//
-//            }
-//
-//            override fun onStart(owner: LifecycleOwner) {
-//
-//                owner.lifecycle.removeObserver(this)
-//            }
-//        })
-//    }
-
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return factory.create(modelClass)
     }
