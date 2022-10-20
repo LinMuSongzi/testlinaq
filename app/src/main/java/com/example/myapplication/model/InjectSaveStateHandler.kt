@@ -1,9 +1,9 @@
 package com.example.myapplication.model
 
-import com.example.myapplication.itf.ISaveStateHandle
+import com.example.myapplication.itf.ISavedStateHandle
 
 internal interface InjectSaveStateHandler {
 
-    fun attachSaveStateHandler(savedHandler: ISaveStateHandle);
+    fun attachSaveStateHandler(savedHandler: ISavedStateHandle);
 
 }

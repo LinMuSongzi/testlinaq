@@ -2,9 +2,9 @@ package com.example.myapplication.model
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
-import com.example.myapplication.itf.ISaveStateHandle
+import com.example.myapplication.itf.ISavedStateHandle
 
-class SaveStateHandleWarp(private val stateHandle: SavedStateHandle) : ISaveStateHandle {
+class SavedStateHandleWarp(private val stateHandle: SavedStateHandle) : ISavedStateHandle {
     override fun <T> getLiveData(key: String): MutableLiveData<T> {
         return stateHandle.getLiveData(key)
     }

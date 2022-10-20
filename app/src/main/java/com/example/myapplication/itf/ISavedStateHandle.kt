@@ -6,7 +6,7 @@ import androidx.annotation.Nullable
 import androidx.lifecycle.MutableLiveData
 
 /*** created by linhui * on 2022/7/13 */
-interface ISaveStateHandle {
+interface ISavedStateHandle {
     @MainThread
     fun <T> getLiveData(key: String): MutableLiveData<T>
 

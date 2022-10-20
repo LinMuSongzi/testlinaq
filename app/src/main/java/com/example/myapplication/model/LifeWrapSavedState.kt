@@ -5,7 +5,7 @@ import android.os.Looper
 import androidx.lifecycle.LifecycleOwner
 import com.example.myapplication.itf.IHolderSavedStateHandler
 import com.example.myapplication.itf.ILifeSaveStateHandler
-import com.example.myapplication.itf.ISaveStateHandle
+import com.example.myapplication.itf.ISavedStateHandle
 
 class LifeWrapSavedState(var lifecycleOwner: LifecycleOwner, var holder:IHolderSavedStateHandler) :ILifeSaveStateHandler {
     override fun getThisLifecycle(): LifecycleOwner {
@@ -16,7 +16,7 @@ class LifeWrapSavedState(var lifecycleOwner: LifecycleOwner, var holder:IHolderS
         Handler(Looper.getMainLooper()).post(runnable)
     }
 
-    override fun getHolderSavedStateHandle(): ISaveStateHandle {
+    override fun getHolderSavedStateHandle(): ISavedStateHandle {
         return holder.getHolderSavedStateHandle()
     }
 }

@@ -1,13 +1,13 @@
 package com.example.myapplication.model
 
 import androidx.lifecycle.MutableLiveData
-import com.example.myapplication.itf.ISaveStateHandle
+import com.example.myapplication.itf.ISavedStateHandle
 import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.set
 
 /*** created by linhui * on 2022/7/27 */
-class LocalSavedHandler : ISaveStateHandle {
+class LocalSavedHandler : ISavedStateHandle {
 
     private val mRegular : HashMap<String, Any?> = HashMap()
     private val mLiveDatas : HashMap<String, SavingStateLiveData<Any>> = HashMap()

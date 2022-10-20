@@ -6,7 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 
-class SaveViewModelProviderFactory(s: SavedStateRegistryOwner,defaultArgs:Bundle) : AbstractSavedStateViewModelFactory(s,defaultArgs) {
+class SaveViewModelProviderFactory(s: SavedStateRegistryOwner,defaultArgs:Bundle?) : AbstractSavedStateViewModelFactory(s,defaultArgs) {
     override fun <T : ViewModel?> create(
         key: String,
         modelClass: Class<T>,
@@ -14,7 +14,7 @@ class SaveViewModelProviderFactory(s: SavedStateRegistryOwner,defaultArgs:Bundle
     ): T {
         val instance= modelClass.newInstance()
         if(InjectSaveStateHandler::class.java.isAssignableFrom(modelClass)){
-            (instance as InjectSaveStateHandler).attachSaveStateHandler(SaveStateHandleWarp(handle))
+            (instance as InjectSaveStateHandler).attachSaveStateHandler(SavedStateHandleWarp(handle))
         }
         return instance
     }

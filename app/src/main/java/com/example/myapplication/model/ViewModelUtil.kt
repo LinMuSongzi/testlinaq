@@ -3,9 +3,10 @@ package com.example.myapplication.model
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import com.example.myapplication.itf.IHolderSavedStateHandler
 import com.example.myapplication.itf.ILifeSaveStateHandler
-import com.example.myapplication.itf.ISaveStateHandle
+import com.example.myapplication.itf.ISavedStateHandle
 
 object ViewModelUtil {
 
@@ -23,7 +24,7 @@ object ViewModelUtil {
      * 保存基于“key”的value 存储于bundle基于SavedStateHandler api
      */
     @JvmStatic
-    fun <T> String.saveStateChange(saveStateHandle: ISaveStateHandle, v: T) {
+    fun <T> String.saveStateChange(saveStateHandle: ISavedStateHandle, v: T) {
         saveStateHandle[this] = v
     }
 
@@ -44,7 +45,7 @@ object ViewModelUtil {
     @JvmStatic
     fun <T> String.liveSaveStateObserver(
         lifecycle: LifecycleOwner,
-        saveStateHandle: ISaveStateHandle,
+        saveStateHandle: ISavedStateHandle,
         observer: Observer<T>
     ) {
         saveStateHandle.getLiveData<T>(this).observe(lifecycle, observer)
@@ -75,7 +76,7 @@ object ViewModelUtil {
     @JvmStatic
     @JvmOverloads
     fun <T> String.liveSaveStateObserverOnOwner(
-        holder: ISaveStateHandle,
+        holder: ISavedStateHandle,
         myLifecycleOwner: LifecycleOwner?,
         observer: Observer<T>,
         otherLifecycleOwner: LifecycleOwner,
@@ -106,7 +107,7 @@ object ViewModelUtil {
     }
 
     @JvmStatic
-    fun <T> String.getSaveStateLiveData(saveStateHandle: ISaveStateHandle): LiveData<T> {
+    fun <T> String.getSaveStateLiveData(saveStateHandle: ISavedStateHandle): LiveData<T> {
         return saveStateHandle.getLiveData(this);
     }
 
@@ -119,7 +120,7 @@ object ViewModelUtil {
     }
 
     @JvmStatic
-    fun <T> String.getSaveStateValue(saveStateHandle: ISaveStateHandle): T? {
+    fun <T> String.getSaveStateValue(saveStateHandle: ISavedStateHandle): T? {
         return saveStateHandle[this]
     }
 
@@ -138,6 +139,8 @@ object ViewModelUtil {
 //            }
 //        }
 //    }
+
+    fun <V:ViewModel> Class<V>.get(l:LifeInteractiveSupport) = l[this]
 
 
 
