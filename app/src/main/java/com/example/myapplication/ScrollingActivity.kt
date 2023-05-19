@@ -12,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
+import com.example.myapplication.business.HelpBusiness
 import com.example.myapplication.databinding.ActivityScrollingBinding
 import com.example.myapplication.itf.ILifeInteractive
 import com.example.myapplication.model.LifeInteractiveSupport
@@ -25,20 +26,31 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
     private lateinit var binding: ActivityScrollingBinding
 
     lateinit var lifeInteractive: LifeInteractiveSupport
+    private val mHelpBusiness = HelpBusiness(this)
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         lifeInteractive = LifeInteractiveSupport(this, savedInstanceState)
 
+        mHelpBusiness.mImageLiveData.observe(this){
+            it?.apply {
+                binding.idCenter.idImage?.setImageBitmap(it)
+            }
+        }
+
         binding = ActivityScrollingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(findViewById(R.id.toolbar))
         binding.toolbarLayout.title = title
+
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            mHelpBusiness.operateFile()
+//            mHelpBusiness.startActivityForResult()
+//            mHelpBusiness.openFileManger()
+//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                .setAction("Action", null).show()
         }
 
 
@@ -50,7 +62,7 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
         var sum = 0
 //        val r = object : Runnable {
 //            override fun run() {
-                "text".saveStateChange(vm, "hello" + sum++)
+        "text".saveStateChange(vm, "hello" + sum++)
 ////                if (lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
 //                    Handler().postDelayed(this, 1000)
 ////                }
@@ -58,7 +70,7 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
 //        }
 //        r.run()
 
-        startService(Intent(this,MusicService::class.java))
+        startService(Intent(this, MusicService::class.java))
 
     }
 
