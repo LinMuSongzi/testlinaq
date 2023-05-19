@@ -9,7 +9,7 @@ class SavedStateHandleWarp(private val stateHandle: SavedStateHandle) : ISavedSt
         return stateHandle.getLiveData(key)
     }
 
-    override fun <T> getLiveData(key: String, initialValue: T?): MutableLiveData<T> {
+    override fun <T> getLiveData(key: String, initialValue: T): MutableLiveData<T> {
         return stateHandle.getLiveData(key, initialValue)
     }
 

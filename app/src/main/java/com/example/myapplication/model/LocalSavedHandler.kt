@@ -42,7 +42,7 @@ class LocalSavedHandler : ISavedStateHandle {
     }
 
 
-    override fun <T> getLiveData(key: String, initialValue: T?): MutableLiveData<T> {
+    override fun <T> getLiveData(key: String, initialValue: T): MutableLiveData<T> {
         return getLiveDataInternal(key, true, initialValue) as MutableLiveData<T>
     }
 
