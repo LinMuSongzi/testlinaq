@@ -33,7 +33,7 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
         super.onCreate(savedInstanceState)
         lifeInteractive = LifeInteractiveSupport(this, savedInstanceState)
 
-        mHelpBusiness.mImageLiveData.observe(this){
+        mHelpBusiness.grayImageLiveData.observe(this){
             it?.apply {
                 binding.idCenter.idImage?.setImageBitmap(it)
             }
@@ -46,7 +46,7 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
         binding.toolbarLayout.title = title
 
         binding.fab.setOnClickListener { view ->
-            mHelpBusiness.operateFile()
+            mHelpBusiness.setimage(this@ScrollingActivity)
 //            mHelpBusiness.startActivityForResult()
 //            mHelpBusiness.openFileManger()
 //            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
