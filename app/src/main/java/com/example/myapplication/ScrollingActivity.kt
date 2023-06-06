@@ -13,6 +13,7 @@ import android.view.MenuItem
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.example.myapplication.business.HelpBusiness
+import com.example.myapplication.business.RecycleViewBusiness.Companion.build
 import com.example.myapplication.databinding.ActivityScrollingBinding
 import com.example.myapplication.itf.ILifeInteractive
 import com.example.myapplication.model.LifeInteractiveSupport
@@ -35,7 +36,7 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
 
         mHelpBusiness.grayImageLiveData.observe(this){
             it?.apply {
-                binding.idCenter.idImage?.setImageBitmap(it)
+//                binding.idCenter.idImage?.setImageBitmap(it)
             }
         }
 
@@ -71,6 +72,9 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
 //        r.run()
 
         startService(Intent(this, MusicService::class.java))
+
+
+        binding.idRecycleview.build()
 
     }
 

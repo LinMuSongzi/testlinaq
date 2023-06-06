@@ -40,7 +40,13 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_scrolling" android:id="@+id/id_center" />
+        <!--        <include layout="@layout/content_scrolling" android:id="@+id/id_center" />-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"

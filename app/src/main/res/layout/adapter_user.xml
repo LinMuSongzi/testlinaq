@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.example.myapplication.business.RecycleViewBusiness.UserInfo" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.userName}"
+                android:textColor="#333333"
+                android:textSize="15dp"
+                tools:text="你好" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@{`年龄：`+ bean.userAge}"
+                android:textColor="#999999"
+                android:textSize="11dp"
+                tools:text="年龄：11" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/id_choose"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/ic_choose"
+            android:visibility="@{bean.choose == true?View.VISIBLE:View.GONE}" />
+
+    </LinearLayout>
+</layout>
