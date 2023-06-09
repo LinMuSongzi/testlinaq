@@ -10,20 +10,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SeventhActivity">
+        tools:context=".FifthFragment">
 
         <TextView
-            android:id="@+id/seventh"
-            android:background="#00BCD4"
+            android:id="@+id/fifth"
+            android:background="#955DB8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="15dp"
             android:paddingVertical="10dp"
             android:textColor="@color/white"
-            android:text="@string/seventh_str"
+            android:text="@string/fifth_str"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

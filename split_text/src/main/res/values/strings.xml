@@ -3,4 +3,15 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+
+    <string name="second_str">我是第2个activity</string>
+    <string name="third_str">我是第3个activity</string>
+    <string name="fourth_str">我是第4个activity</string>
+    <string name="fifth_str">我是第5个activity</string>
+    <string name="sixth_str">我是第6个activity</string>
+    <string name="seventh_str">我是第7个activity</string>
+    <string name="eighth_str">我是第8个activity</string>
+    <string name="ninth_str">我是第9个activity</string>
+
 </resources>
