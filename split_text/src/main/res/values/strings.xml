@@ -4,7 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-
+    <string name="main_str">我是mainActivity</string>
     <string name="second_str">我是第2个activity</string>
     <string name="third_str">我是第3个activity</string>
     <string name="fourth_str">我是第4个activity</string>

@@ -3,39 +3,39 @@
     xmlns:window="http://schemas.android.com/apk/res-auto">
 
     <!-- Define a split for the named activities. -->
-    <SplitPairRule
-        window:splitRatio="0.33"
-        window:splitLayoutDirection="locale"
-        window:splitMinWidthDp="840"
-        window:splitMaxAspectRatioInPortrait="alwaysAllow"
-        window:finishPrimaryWithSecondary="never"
-        window:finishSecondaryWithPrimary="always"
-        window:clearTop="false">
-        <SplitPairFilter
-            window:primaryActivityName=".ListActivity"
-            window:secondaryActivityName=".DetailActivity"/>
-    </SplitPairRule>
+<!--    <SplitPairRule-->
+<!--        window:splitRatio="0.33"-->
+<!--        window:splitLayoutDirection="locale"-->
+<!--        window:splitMinWidthDp="840"-->
+<!--        window:splitMaxAspectRatioInPortrait="alwaysAllow"-->
+<!--        window:finishPrimaryWithSecondary="never"-->
+<!--        window:finishSecondaryWithPrimary="always"-->
+<!--        window:clearTop="false">-->
+<!--        <SplitPairFilter-->
+<!--            window:primaryActivityName=".SeconeActivity"-->
+<!--            window:secondaryActivityName=".MainActivity"/>-->
+<!--    </SplitPairRule>-->
 
-    <!-- Specify a placeholder for the secondary container when content is
-         not available. -->
-    <SplitPlaceholderRule
-        window:placeholderActivityName=".PlaceholderActivity"
-        window:splitRatio="0.33"
-        window:splitLayoutDirection="locale"
-        window:splitMinWidthDp="840"
-        window:splitMaxAspectRatioInPortrait="alwaysAllow"
-        window:stickyPlaceholder="false">
-        <ActivityFilter
-            window:activityName=".ListActivity"/>
-    </SplitPlaceholderRule>
+<!--    &lt;!&ndash; Specify a placeholder for the secondary container when content is-->
+<!--         not available. &ndash;&gt;-->
+<!--    <SplitPlaceholderRule-->
+<!--        window:placeholderActivityName=".PlaceholderActivity"-->
+<!--        window:splitRatio="0.33"-->
+<!--        window:splitLayoutDirection="locale"-->
+<!--        window:splitMinWidthDp="840"-->
+<!--        window:splitMaxAspectRatioInPortrait="alwaysAllow"-->
+<!--        window:stickyPlaceholder="false">-->
+<!--        <ActivityFilter-->
+<!--            window:activityName=".MainActivity"/>-->
+<!--    </SplitPlaceholderRule>-->
 
-    <!-- Define activities that should never be part of a split. Note: Takes
-         precedence over other split rules for the activity named in the
-         rule. -->
-    <ActivityRule
-        window:alwaysExpand="true">
-        <ActivityFilter
-            window:activityName=".ExpandedActivity"/>
-    </ActivityRule>
+<!--    &lt;!&ndash; Define activities that should never be part of a split. Note: Takes-->
+<!--         precedence over other split rules for the activity named in the-->
+<!--         rule. &ndash;&gt;-->
+<!--    <ActivityRule-->
+<!--        window:alwaysExpand="true">-->
+<!--        <ActivityFilter-->
+<!--            window:activityName=".ExpandedActivity"/>-->
+<!--    </ActivityRule>-->
 
 </resources>
