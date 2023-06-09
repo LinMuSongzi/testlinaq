@@ -2,10 +2,15 @@ package com.splite.test
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.splite.test.Comment.start
+import com.splite.test.databinding.ActivityEighthBinding
+import com.splite.test.databinding.ActivityNinthBinding
 
-class EighthActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_eighth)
+class EighthActivity : DataBindingActivity<ActivityEighthBinding>() {
+
+    override fun onCreate2(savedInstanceState: Bundle?) {
+        dataBinding.eighth.setOnClickListener {
+            NinthActivity::class.java.start(this)
+        }
     }
 }
