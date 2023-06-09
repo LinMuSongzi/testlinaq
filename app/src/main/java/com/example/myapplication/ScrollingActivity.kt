@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.example.myapplication.business.HelpBusiness
@@ -21,6 +22,9 @@ import com.example.myapplication.model.SimpleViewModel
 import com.example.myapplication.model.ViewModelUtil.get
 import com.example.myapplication.model.ViewModelUtil.liveSaveStateObserver
 import com.example.myapplication.model.ViewModelUtil.saveStateChange
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.functions.Consumer
+import io.reactivex.rxjava3.subjects.BehaviorSubject
 
 class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
 
@@ -76,7 +80,33 @@ class ScrollingActivity : AppCompatActivity(), ILifeInteractive {
 
         binding.idRecycleview.build()
 
+
+
+//        BehaviorSubject.createDefault("").sub(this){
+//
+//        }
+
+
     }
+
+    companion object{
+
+//        fun <T> BehaviorSubject<T>.sub(lifecycleOwner: LifecycleOwner,consumer: Consumer<T>){
+//            var dispose:Disposable? = null
+//            lifecycleOwner.lifecycle.addObserver(object :DefaultLifecycleObserver{
+//                override fun onResume(owner: LifecycleOwner) {
+//                    dispose = subscribe(consumer)
+//                }
+//
+//                override fun onPause(owner: LifecycleOwner) {
+//                    dispose?.dispose()
+//                }
+//
+//            })
+//        }
+
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
