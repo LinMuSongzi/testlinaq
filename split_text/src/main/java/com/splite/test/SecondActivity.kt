@@ -12,6 +12,10 @@ class SecondActivity : DataBindingActivity<ActivitySecondBinding>() {
         dataBinding.second.setOnClickListener {
             ThirdActivity::class.java.start(this)
         }
+
+
+//        dataBinding.idRecycle.adapter = Cada
+
     }
 
 }
