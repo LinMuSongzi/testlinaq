@@ -1,8 +1,13 @@
 package com.splite.test
 
+import android.accessibilityservice.AccessibilityService.ScreenshotResult
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Build
+import android.os.Build.VERSION_CODES.S
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -10,28 +15,45 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.core.view.forEach
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.BaseRequestOptions
 import com.splite.test.Comment.start
 import com.splite.test.databinding.ActivityThirdBinding
 import com.splite.test.databinding.LayoutViewPageColorBinding
+import java.lang.ref.WeakReference
 import kotlin.math.abs
 
 class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
 
 
     val TAG = "ThirdActivity"
+    val arrayInt = intArrayOf(Color.RED, Color.BLACK, Color.BLUE)
+    val array = arrayOf("https://img0.baidu.com/it/u=2726283335,320951208&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+        , "https://img1.baidu.com/it/u=2548565113,2783875067&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500", "https://img1.baidu.com/it/u=2681671445,1640676832&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500")
 
-    val array = intArrayOf(Color.RED, Color.BLACK, Color.BLUE)
-
-
+    val screenWidth: Int by lazy {
+        val w = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val s = w.defaultDisplay
+        s.width
+    }
 
     override fun onCreate2(savedInstanceState: Bundle?) {
         dataBinding.third.setOnClickListener {
-            FourthActivity::class.java.start(this)
+//            FourthActivity::class.java.start(this)
+
+            Dialog(this@ThirdActivity).show()
+
         }
 
+
+
+//        dataBinding.idViewpage.pageMargin = 40
+        dataBinding.idViewpage.offscreenPageLimit = 1
+        val weakReference = WeakReference(dataBinding)
         dataBinding.idViewpage.adapter = object : PagerAdapter() {
             override fun getCount(): Int {
                 return Int.MAX_VALUE - 100
@@ -45,8 +67,19 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
                 val dataBinding = LayoutViewPageColorBinding.inflate(layoutInflater, container, true)//layoutInflater.inflate(R.layout.layout_view_page_color, container, false)
                 return dataBinding.root.apply {
                     dataBinding.root.tag = position
-                    dataBinding.idView.setBackgroundColor(array[position % 3])
-                    dataBinding.idText.text = position.toString()
+//                    dataBinding.root.setBackgroundColor(arrayInt[position % 3])
+
+                    Glide.with(dataBinding.idImage).load(array[position % 3]).into(dataBinding.idImage)
+                    dataBinding.idImage.layoutParams.width = (screenWidth * 0.45f).toInt()
+                    dataBinding.idImage.setOnClickListener {
+                        if(weakReference.get()?.idViewpage?.currentItem == position){
+                            Toast.makeText(this@ThirdActivity, "show position = $position", Toast.LENGTH_SHORT).show()
+                        }else{
+                            weakReference.get()?.idViewpage?.currentItem = position
+                        }
+                    }
+//                    dataBinding.idView.layoutParams.he
+//                    dataBinding.idText.text = position.toStrin/**/g()
                 }
             }
 
@@ -59,6 +92,11 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
 
         dataBinding.idViewpage.offscreenPageLimit = 2
         dataBinding.idViewpage.setPageTransformer(true, MyPageTransformer(this))
+
+
+
+
+
 
 
     }
