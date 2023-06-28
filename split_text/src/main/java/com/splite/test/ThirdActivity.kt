@@ -1,8 +1,10 @@
 package com.splite.test
 
 import android.accessibilityservice.AccessibilityService.ScreenshotResult
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -16,6 +18,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.PermissionChecker.PermissionResult
 import androidx.core.view.forEach
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -25,6 +29,7 @@ import com.splite.test.Comment.start
 import com.splite.test.databinding.ActivityThirdBinding
 import com.splite.test.databinding.LayoutViewPageColorBinding
 import java.lang.ref.WeakReference
+import java.util.jar.Manifest
 import kotlin.math.abs
 
 class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
@@ -41,6 +46,12 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
         s.width
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == 0x99 && resultCode == Activity.RESULT_OK){
+            Log.i(TAG, "onActivityResult: data.data = ${data?.data}")
+        }
+    }
+
     override fun onCreate2(savedInstanceState: Bundle?) {
         dataBinding.third.setOnClickListener {
 //            FourthActivity::class.java.start(this)
@@ -49,9 +60,18 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
 
         }
 
+        val registerPicture = registerForActivityResult(ActivityResultContracts.TakePicturePreview()){
+            it?.apply {
+                Toast.makeText(this@ThirdActivity, "size = ${it.rowBytes * it.width} byte , width = ${it.width} , height = ${it.height}", Toast.LENGTH_SHORT).show()
+            }
+        }
 
+        val register = registerForActivityResult(ActivityResultContracts.RequestPermission()){
+            if(it){
+                registerPicture.launch(null)
+            }
+        }
 
-//        dataBinding.idViewpage.pageMargin = 40
         dataBinding.idViewpage.offscreenPageLimit = 1
         val weakReference = WeakReference(dataBinding)
         dataBinding.idViewpage.adapter = object : PagerAdapter() {
@@ -72,8 +92,15 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
                     Glide.with(dataBinding.idImage).load(array[position % 3]).into(dataBinding.idImage)
                     dataBinding.idImage.layoutParams.width = (screenWidth * 0.45f).toInt()
                     dataBinding.idImage.setOnClickListener {
+
                         if(weakReference.get()?.idViewpage?.currentItem == position){
-                            Toast.makeText(this@ThirdActivity, "show position = $position", Toast.LENGTH_SHORT).show()
+//                            register.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+//                            Toast.makeText(this@ThirdActivity, "show position = $position", Toast.LENGTH_SHORT).show()
+
+                            startActivityForResult(Intent(Intent.ACTION_GET_CONTENT).apply {
+                                type = "image/*"
+                            },0x99)
+
                         }else{
                             weakReference.get()?.idViewpage?.currentItem = position
                         }
