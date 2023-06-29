@@ -4,8 +4,9 @@
         <!-- Primary brand color. -->
         <item name="background">@color/white</item>
         <item name="android:statusBarColor">@color/white</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowLightStatusBar">true</item>
-        
+        <item name="android:windowFullscreen">true</item>
         <item name="colorAccent">@color/purple_200</item>
         <item name="colorPrimary">@color/purple_500</item>
         <!-- Customize your theme here. -->
