@@ -13,5 +13,6 @@
     <string name="seventh_str">我是第7个activity</string>
     <string name="eighth_str">我是第8个activity</string>
     <string name="ninth_str">我是第9个activity</string>
+    <string name="family_state_str">我的家庭</string>
 
 </resources>

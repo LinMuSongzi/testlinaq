@@ -116,7 +116,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="林安琪"
+                tools:text="林安琪"
+                android:text="@{bean.name}"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_show_text_dp" />
@@ -151,7 +152,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="女"
+                tools:text="女"
+                android:text="@{bean.getGenderStr()}"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_show_text_dp" />
@@ -186,7 +188,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="---"
+                android:text="@{bean.school}"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_show_text_dp" />
@@ -220,7 +222,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="----"
+                android:text="@{bean.phoneNumber}"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_show_text_dp" />
@@ -232,23 +234,23 @@
         <!--    </LinearLayout>-->
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:src="@mipmap/ic_cap_1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:src="@mipmap/ic_cap_1"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent" />-->
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginTop="796dp"
+            android:layout_marginRight="24dp"
             android:src="@mipmap/ic_book_2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/id_phonr_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

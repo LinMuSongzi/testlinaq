@@ -9,5 +9,8 @@
     <color name="white">#333333</color>
 
     <color name="my_resume_color">#999999</color>
+    <color name="color_title_1">#333333</color>
+    <color name="color_title_2">#666666</color>
+    <color name="color_title_3">#999999</color>
 
 </resources>
