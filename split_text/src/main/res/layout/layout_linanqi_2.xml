@@ -222,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text="父亲: "
+                        android:text="社会实践: "
                         android:textColor="@color/color_title_2"
                         android:textSize="@dimen/main_show_title_3" />
 
@@ -231,9 +231,27 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_weight="1"
-                        android:text="母亲: "
+                        android:text="学习经历: "
                         android:textColor="@color/color_title_2"
                         android:textSize="@dimen/main_show_title_3" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="其他1: "
+                        android:textColor="@color/color_title_2"
+                        android:textSize="@dimen/main_show_title_3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="其他2: "
+                        android:textColor="@color/color_title_2"
+                        android:textSize="@dimen/main_show_title_3" />
+
 
 
                 </LinearLayout>
