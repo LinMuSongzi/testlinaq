@@ -1,36 +1,29 @@
 package com.splite.test
 
-import android.accessibilityservice.AccessibilityService.ScreenshotResult
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.os.Build
-import android.os.Build.VERSION_CODES.S
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.PermissionChecker.PermissionResult
-import androidx.core.view.forEach
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.BaseRequestOptions
-import com.splite.test.Comment.start
 import com.splite.test.databinding.ActivityThirdBinding
 import com.splite.test.databinding.LayoutViewPageColorBinding
+import com.splite.test.vm.CheckViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.ref.WeakReference
-import java.util.jar.Manifest
-import kotlin.math.abs
 
 class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
 
@@ -46,10 +39,21 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
         s.width
     }
 
+    val mCheckViewModel by lazy {
+        ViewModelProvider(this@ThirdActivity)[CheckViewModel::class.java]
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == 0x99 && resultCode == Activity.RESULT_OK){
             Log.i(TAG, "onActivityResult: data.data = ${data?.data}")
         }
+    }
+
+
+    suspend fun runMore():Int{
+        delay(5000)
+        mCheckViewModel.savedStateHandle.getLiveData<Int>("one").postValue(1)
+        return 1
     }
 
     override fun onCreate2(savedInstanceState: Bundle?) {
@@ -59,6 +63,18 @@ class ThirdActivity : DataBindingActivity<ActivityThirdBinding>() {
             Dialog(this@ThirdActivity).show()
 
         }
+
+        mCheckViewModel.viewModelScope.launch (){
+            Log.i(TAG, "onCreate2: start ")
+            withContext(Dispatchers.IO){
+                Log.i(TAG, "onCreate2: ${runMore()}")
+            }
+            Log.i(TAG, "onCreate2: end ")
+            mCheckViewModel.savedStateHandle.getLiveData<Int>("one").observe(this@ThirdActivity){
+                Log.i(TAG, "onCreate2: savedStateHandle one = $it")
+            }
+        }
+
 
         val registerPicture = registerForActivityResult(ActivityResultContracts.TakePicturePreview()){
             it?.apply {
